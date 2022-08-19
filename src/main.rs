@@ -18,6 +18,7 @@ struct Loop {
 enum Codeword {
     Op(Op),
     Const(Const),
+    Unknown,
 }
 
 enum Op {
@@ -83,16 +84,18 @@ fn main() {
 
     // now we have our code string from the file. Let's tokenize it
 
-    // let mut group: Vec<Codeword> = 
+    let mut prog = Program {contents: Codegroup::Statement(vec![])};
 
-    // for char in code_string.chars() {
-    //     match char {
-    //         '0' => Const::C0,
-    //         _ => {panic!("Unexpected letter")}
-    //     }
+    for char in code_string.chars() {
+
+        //prog.contents.
+        match char {
+            '0' => Codeword::Const(Const::C0),
+            _ => Codeword::Unknown,
+        }
 
 
-    // }
+    }
 
     dbg!(code_string);
 

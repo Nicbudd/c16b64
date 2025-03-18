@@ -93,6 +93,8 @@ const POSTSCRIPT: &'static str = "}";
 
 const RUST_IR_FILE_PATH: &'static str = "16b64_ir.rs"; 
 
+const RUSTC_ARGS: &'static str = "-C opt-level = 'z'";
+
 fn main() {
     // TODO: add clap
     // --16b_no_opt - no optimizations (default)
@@ -153,7 +155,7 @@ fn main() {
     // COMPILER CALL -----------------------------------------------------------
 
     let rustc_result = Command::new("rustc")
-                    .args([RUST_IR_FILE_PATH, "-o", output_file_path])
+                    .args([RUST_IR_FILE_PATH, "-o", output_file_path, RUSTC_ARGS])
                     .stdout(Stdio::piped())
                     .stderr(Stdio::piped())
                     .status()
